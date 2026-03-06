@@ -642,6 +642,60 @@ flex-wrap: nowrap;
     opacity: 0;
   }
 }
+    /* --- MOBILE NAVIGATION FIXES --- */
+@media (max-width: 500px) {
+
+  /* NAV LINKS SCROLL */
+  .nav-links {
+    overflow-x: auto;                 /* keep horizontal scrolling */
+    -webkit-mask-image: none;         /* remove iOS fading edge */
+    mask-image: none;                 /* fallback for other browsers */
+    -webkit-overflow-scrolling: touch;/* smooth momentum scrolling */
+    scrollbar-width: thin;            /* Firefox scrollbar */
+    scroll-behavior: smooth;
+    position: relative;
+  }
+
+  /* Webkit scrollbar for clarity */
+  .nav-links::-webkit-scrollbar {
+    height: 4px;
+  }
+  .nav-links::-webkit-scrollbar-thumb {
+    background: #125D0D;
+    border-radius: 2px;
+  }
+  .nav-links::-webkit-scrollbar-track {
+    background: #f0f7f4;
+  }
+
+  /* Optional subtle scroll hint */
+  .nav-links::after {
+    content: '→';                     /* arrow hint */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #125D0D;
+    padding-left: 6px;
+    pointer-events: none;
+  }
+
+  /* EXIT BUTTON SHRINK */
+  .nav-exit-btn {
+    font-size: 10px !important;       /* smaller text */
+    padding: 4px 10px !important;     /* smaller button */
+    min-width: 40px;                  /* optional shrink limit */
+    min-height: 28px;
+  }
+
+  /* SECTION NUMBER ICONS SHRINK */
+  .section-icon {
+    width: 25px !important;
+    height: 25px !important;
+    font-size: 14px !important;
+  }
+}
 </head>
     </style>
 
