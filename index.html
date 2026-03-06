@@ -725,7 +725,21 @@ flex-wrap: nowrap;
     animation: swipeHint 1.5s ease-in-out 1; /* runs once */
   }
 }
+/* Center Exit button on small screens */
+.nav-bar {
+    flex-direction: column;       /* stack nav links + exit button vertically */
+    align-items: center;          /* center horizontally */
+    gap: 10px;                    /* space between nav-links and button */
+}
 
+.nav-links {
+    justify-content: center;      /* center the nav links row */
+    flex-wrap: wrap;              /* allow wrapping if too many links */
+}
+
+.nav-exit-btn {
+    margin: 0;                    /* remove any inherited margins */
+}
     </style>
 </head>
 
