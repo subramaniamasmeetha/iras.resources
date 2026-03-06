@@ -762,28 +762,35 @@ flex-wrap: nowrap;
     gap: 15px;
 }
 
+.stay-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .stay-row {
     display: flex;
     justify-content: space-between;
     border-left: 6px solid #125D0D;
-    padding-left: 15px;
-    padding-right: 10px;
-    flex-wrap: wrap; /* allow text to wrap on small screens */
+    padding: 15px;
+    flex-wrap: wrap; /* allows wrapping on small screens */
+    gap: 10px;
 }
 
 .stay-row.yellow { border-left-color: #EAAA00; }
 .stay-row.green { border-left-color: #8A9A5B; }
 
-/* Mobile adjustments */
 @media (max-width: 500px) {
     .stay-row {
         flex-direction: column;
-        gap: 6px;
         padding-left: 12px;
         padding-right: 12px;
+        gap: 6px;
     }
+
     .stay-row div {
         width: 100%;
+        text-align: left;
     }
 }
 
