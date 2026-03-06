@@ -613,11 +613,30 @@ flex-wrap: nowrap;
             .nav-link {
     font-size: 12px;
 }
+.nav-links {
+    position: relative;
+}
 
-           .nav-exit-btn {
-    margin-left: auto;
-    padding: 6px 12px;
-    font-size: 12px;
+.nav-links::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to left, white 0%, rgba(255,255,255,0) 100%);
+}
+
+  @media (max-width: 500px) {
+    .nav-bar {
+        flex-wrap: wrap; /* allow new row */
+    }
+    .nav-exit-btn {
+        width: 100%;      /* full width row */
+        text-align: center;
+        margin-top: 8px;
+    }
 }
 
             .content {
@@ -638,6 +657,16 @@ flex-wrap: nowrap;
         flex-wrap: nowrap;
         overflow-x: auto;
     }
+}
+.section-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
     </style>
