@@ -604,10 +604,12 @@ flex-wrap: nowrap;
             }
 
             /* Navigation stacked */
-          .nav-bar {
-    flex-direction: row;
+    .nav-bar {
+    flex-direction: row;          /* keep nav horizontal */
     align-items: center;
-    padding: 10px 12px;
+    justify-content: space-between; /* exit button on right */
+    padding: 8px 12px;            /* shrink padding */
+    gap: 8px;
 }
 
             .nav-links {
@@ -625,13 +627,15 @@ flex-wrap: nowrap;
 @media (max-width: 500px) {
 
   /* NAV LINKS SCROLL */
-  .nav-links {
-    overflow-x: auto;                 /* horizontal scrolling */
-    -webkit-overflow-scrolling: touch;/* smooth momentum scrolling */
-    scrollbar-width: thin;            /* Firefox scrollbar */
-    scroll-behavior: smooth;
-    position: relative;
-  }
+.nav-links {
+    display: flex;
+    flex-wrap: nowrap;            /* do NOT wrap */
+    overflow-x: auto;             /* enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    max-width: calc(100% - 60px); /* leave room for Exit button */
+}
+
 
   /* Webkit scrollbar for clarity */
   .nav-links::-webkit-scrollbar {
@@ -670,6 +674,11 @@ flex-wrap: nowrap;
     min-width: 40px;
     min-height: 28px;
   }
+.nav-exit-btn {
+    flex-shrink: 0;  /* don’t shrink too much */
+    font-size: 12px;
+    padding: 6px 12px;
+}
 
   /* SECTION NUMBER ICONS SHRINK */
   .section-icon {
