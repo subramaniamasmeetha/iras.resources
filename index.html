@@ -96,6 +96,11 @@
     gap: 18px;
     flex-wrap: nowrap; /* keeps links in one row */
     overflow-x: auto; /* allows smooth horizontal scrolling on tiny screens */
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
       .nav-link {
@@ -627,16 +632,31 @@ flex-wrap: nowrap;
     pointer-events: none;
     background: linear-gradient(to left, white 0%, rgba(255,255,255,0) 100%);
 }
+/* Mobile nav scroll indicator */
+@media (max-width: 500px) {
+  .nav-bar::after {
+    content: '→';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #125D0D;
+    pointer-events: none; /* so it doesn't block scrolling */
+  }
+}
 
-  @media (max-width: 500px) {
-    .nav-bar {
-        flex-wrap: wrap; /* allow new row */
-    }
-    .nav-exit-btn {
-        width: 100%;      /* full width row */
-        text-align: center;
-        margin-top: 8px;
-    }
+/* Mobile exit button shrink & responsive */
+@media (max-width: 768px) {
+  .nav-exit-btn {
+    padding: 4px 10px;       /* smaller padding for the circle */
+    font-size: 11px;          /* smaller text */
+    border-radius: 999px;     /* keep it circular/oval */
+    min-width: auto;           /* remove fixed width issues */
+    max-width: 80px;           /* optional, prevent overflow */
+    text-align: center;
+  }
+}
 }
 
             .content {
@@ -667,6 +687,21 @@ flex-wrap: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+/* --- MOBILE NAVIGATION SCROLL HINT --- */
+@keyframes swipeHint {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-5px); }
+  50%  { transform: translateX(10px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 500px) {
+  .nav-links a:first-child {
+    display: inline-block; /* needed for transform */
+    animation: swipeHint 1.5s ease-in-out 1; /* runs once */
+  }
 }
 
     </style>
@@ -917,7 +952,7 @@ As with all of the court procedures, it is best that you are supported and/or re
             <div class="form-item">
                 <h4>Form 4.1: First Medical Certificate</h4>
                 <p>Certifies a patient as involuntary for up to 48 hours as part of the initial assessment.</p>
-                <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3504_1_fil.pdf" target="_blank" class="form-pdf-button">View PDF</a>
+                <a href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/17_2023_Form4.1" target="_blank" class="form-pdf-button">View PDF</a>
             </div>
             <div class="form-item">
  <h4>Form 4.2: First Medical Certificate</h4>
