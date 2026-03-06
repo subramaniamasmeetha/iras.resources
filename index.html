@@ -750,6 +750,42 @@ flex-wrap: nowrap;
                 grid-template-columns: 1fr;
             }
         }
+/* Base diagram styling */
+.stay-diagram {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stay-row {
+    display: flex;
+    justify-content: space-between;
+    border-left: 6px solid #125D0D;
+    padding-left: 15px;
+    padding-right: 10px;
+    flex-wrap: wrap; /* allow text to wrap on small screens */
+}
+
+.stay-row.yellow { border-left-color: #EAAA00; }
+.stay-row.green { border-left-color: #8A9A5B; }
+
+/* Mobile adjustments */
+@media (max-width: 500px) {
+    .stay-row {
+        flex-direction: column;
+        gap: 6px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .stay-row div {
+        width: 100%;
+    }
+}
 
     </style>
 </head>
@@ -933,7 +969,6 @@ have the option of continuing treatment as a voluntary patient.
                             You have the right to apply for a review panel hearing with the Mental Health Review Board. Review panels have three people who will hear your case and decide if you still meet all four criteria to be an involuntary patient. Please visit the link below to access a copy of Form 7 and/or to visit the Mental Health Review Board website.
 <br><br>
 <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3507fil.pdf" target="_blank" class="card-btn"> Form 7</a>
-<br><br>
 <a href="https://clasbc.net/get-legal-help/mental-health-law/" target="_blank" class="card-btn">Visit MHLP Website</a><br><br>
 
                         
@@ -1134,8 +1169,9 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
                 The length of time you can be kept as an involuntary patient depends on the certification process set out in the Act (please refer to diagram below). Regardless, remember that it is your legal right to have a doctor reassess you regularly. You must be discharged from involuntary status as soon as a doctor believes you no longer meet all four of the involuntary admission criteria.
                 <br><br>
 
-                <div style="margin-top:20px; padding:20px; background:white; border-radius:6px; border:1px solid #ddd;">
-                    <div style="display:flex; justify-content:space-between; border-left:6px solid #125D0D; padding-left:15px; margin-bottom:15px;">
+         <div class="stay-diagram">
+  <!-- rows remain the same, but remove inline flex styling -->
+  <div class="stay-row">
                         <div>
                             <strong>First Certificate</strong><br>
                             Form 4.1
@@ -1194,7 +1230,7 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
                 Who decides if I still meet the criteria? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                A doctor or nurse practitioner is responsible for assessing whether you meet the criteria under the MHA. <br>
+                A doctor or nurse practitioner is responsible for assessing whether you meet the criteria under the MHA. <br><br>
                 As an an involuntary patient, you have the right to ask questions and be involved in your treatment plan. If you disagree with your detention status as you believe you do not meet all four of the involuntary admission criteria, you have the right to apply for a review panel hearing (Form 7). You also have the right to speak with a lawyer at any time. <br><br>
             </div>
         </div>
