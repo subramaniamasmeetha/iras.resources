@@ -614,6 +614,7 @@ flex-wrap: nowrap;
 .nav-links {
     position: relative;
 }
+
 /* NAVIGATION BAR - DESKTOP & MOBILE CLEAN */
 .nav-bar {
     display: flex;
@@ -793,8 +794,193 @@ flex-wrap: nowrap;
         text-align: left;
     }
 }
+<style>
+/* ===== LEARNING CARDS CAROUSEL ===== */
+.learning-section {
+    text-align: center;
+    padding: 20px 10px;
+}
 
+.section-header {
+    margin-bottom: 10px;
+}
+
+.learning-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.learning-grid::-webkit-scrollbar {
+    height: 6px;
+}
+.learning-grid::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+/* Cards */
+.learning-card {
+    flex: 0 0 220px;
+    min-height: 160px;
+    padding: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #5f9e8f, #2c5f5d);
+    border: 2px solid #2c5f5d;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    scroll-snap-align: center;
+}
+
+.learning-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.learning-card p {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.learning-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3);
+}
+
+/* Interactive arrow */
+.learning-card::after {
+    content: "↗";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.learning-card:hover::after {
+    transform: translate(3px, -3px);
+}
+
+/* Health Justice card (center, larger) */
+.learning-card.health-justice {
+    flex: 0 0 300px; /* larger than side cards */
+    background: linear-gradient(135deg, #f08c5f, #d94f3d);
+    border: 2px solid #d94f3d;
+}
+
+.learning-card.health-justice:hover {
+    background: linear-gradient(135deg, #ff9966, #d94f3d);
+}
+
+/* Contact card (theme-matching) */
+.learning-card.contact {
+    background: linear-gradient(135deg, #4b7f7f, #2c5f5d);
+    border: 2px solid #2c5f5d;
+}
+
+.learning-card.contact:hover {
+    background: linear-gradient(135deg, #5f9e8f, #2c5f5d);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .learning-card {
+        flex: 0 0 180px;
+    }
+    .learning-card.health-justice {
+        flex: 0 0 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    .learning-grid {
+        gap: 15px;
+        padding: 15px 0;
+    }
+    .learning-card {
+        flex: 0 0 160px;
+        padding: 15px;
+    }
+    .learning-card.health-justice {
+        flex: 0 0 200px;
+    }
+}
+/* RESOURCE CARDS */
+.resource-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.resource-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
+    min-width: 200px;
+    color: white;
+}
+
+/* Individual Card Colors */
+.card-left { background: #125D0D; }
+.card-center { background: #8A9A5B; flex: 1.2; min-width: 240px; }
+.card-right { background: #EAAA00; color: #125D0D; }
+
+.resource-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Icon */
+.resource-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+/* Titles */
+.resource-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Descriptions */
+.resource-card p {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .resource-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .card-center { min-width: auto; flex: none; }
+}
+</style>
     </style>
+
 </head>
 
 <body>
@@ -1072,6 +1258,11 @@ As with all of the court procedures, it is best that you are supported and/or re
                 <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3513_1_fil.pdf" target="_blank" class="form-pdf-button">View PDF</a>
             </div>
  <div class="form-item">
+                <h4>Form 15: Nomination of Near Relative</h4>
+                <p>This form allows you to choose which relative will be notified of your admission, review panel hearing, and/or discharge.</p>
+                <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3515fil.pdf" target="_blank" class="form-pdf-button">View PDF</a>
+            </div>
+ <div class="form-item">
                 <h4>Form 20: Extended Leave Authorization</h4>
                 <p>Authorizes temporary leave from the hospital while still under the Act.</p>
                 <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3520fil.pdf"target="_blank" class="form-pdf-button">View PDF</a>
@@ -1173,7 +1364,11 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
                 How long can they keep me? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                The length of time you can be kept as an involuntary patient depends on the certification process set out in the Act (please refer to diagram below). Regardless, remember that it is your legal right to have a doctor reassess you regularly. You must be discharged from involuntary status as soon as a doctor believes you no longer meet all four of the involuntary admission criteria.
+                Being in hospital involuntarily can feel confusing and overwhelming. Under the Mental Health Act, you can be kept in hospital for as long as a doctor believes you continue to meet the admission criteria. <br><br>
+
+In some cases, your care may continue outside the hospital on an outpatient basis through something called extended leave. This means a doctor believes you still meet all of the involuntary admission criteria, but that your treatment may be better supported in a community setting.<br><br>
+
+There are set timeframes for review (see diagram below), and you have the right to be reassessed regularly. You must be discharged from involuntary status as soon as a doctor determines that you no longer meet all four criteria.
                 <br><br>
 
 <div class="stay-diagram">
@@ -1221,7 +1416,7 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
                 Who decides if I still meet the criteria? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                A doctor or nurse practitioner is responsible for assessing whether you meet the criteria under the MHA. <br><br>
+                Decisions about whether you continue to meet the criteria are made by medical professionals. A doctor or nurse practitioner can complete the initial Form 4.1. For the remaining certification periods, only a doctor can reassess you and decide whether to renew your involuntary status. <br><br>
                 As an an involuntary patient, you have the right to ask questions and be involved in your treatment plan. If you disagree with your detention status as you believe you do not meet all four of the involuntary admission criteria, you have the right to apply for a review panel hearing (Form 7). You also have the right to speak with a lawyer at any time. <br><br>
             </div>
         </div>
@@ -1251,17 +1446,17 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
                 Can my family get information about me? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                <strong>Notification of a Near Relative (Form 15)</strong>
-                If you are admitted involuntarily, the hospital must notify your “near relative” that you have been admitted. This is usually documented using Form 15: Notification to Near Relative. This notification typically confirms that you have been admitted and the name of the hospital. It does not automatically mean detailed medical information will be shared.<br><br>
+                <strong>Nomination and Notification of a Near Relative (Form 15 and 16)</strong>
+                If you are admitted involuntarily, the hospital must notify a “near relative” that you have been admitted. Completing a Form 15: Nomination of Near Relative allows you to choose which relative you would like to be notified about your admission, review panel hearing, and/or discharge status. The hospital will then submit a Form 16: Notification to a Near Relative to notify a near relative of your admission and other important updates, as is required under the Mental Health Act This notification typically confirms that you have been admitted and the name of the hospital. It does not automatically mean detailed medical information will be shared.<br><br>
 
                 It’s common to feel anxious about who knows what. You have a voice in this. While the hospital has a legal duty to notify a near relative of an involuntary admission, your broader medical information remains protected. If family involvement feels supportive, staff can help include them. If it feels unsafe or unwanted, you can raise those concerns and ask about your options.
             </div>
-</section>
+</section><br>
     <!-- CONTACTS -->
   <section id="contacts" style="scroll-margin-top: 100px; margin-top: 10px;">
                 <div class="section-header">
                     <div class="section-icon">📞</div>
-                    <h2>Resources</h2>
+                    <h2>Contacts</h2>
                 </div>
 
         <div class="contact-grid">
@@ -1346,6 +1541,52 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
                 </a>
             </div>
 </section>
+<br><br><br>
+<!-- INTERESTED IN LEARNING MORE SECTION -->
+<section id="resources" style="scroll-margin-top: 100px; margin-top: 40px;">
+    <div class="section-header">
+        <div class="section-icon">4</div>
+        <h2>Interested in Learning More?</h2>
+    </div>
+
+    <div class="resource-row">
+        <!-- BC Mental Health Act -->
+        <a href="https://irasbc.ca/" target="_blank" class="resource-card card-left">
+            <div class="resource-icon">
+                <!-- Scroll icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+                    <path d="M4 4v16h16V4H4zm14 14H6V6h12v12zM8 8h8v2H8V8zm0 4h8v2H8v-2z"/>
+                </svg>
+            </div>
+            <h3>IRAS BC</h3>
+            <p>Refer to our website for printable materials<br>and additional information about your legal rights.</p>
+        </a>
+
+        <!-- Health Justice -->
+        <a href="https://healthjustice.ca/" target="_blank" class="resource-card card-center">
+            <div class="resource-icon">
+                <!-- Scales of justice icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 1L9 8H4l5 5-2 8 7-4 7 4-2-8 5-5h-5l-3-7z"/>
+                </svg>
+            </div>
+            <h3>Health Justice</h3>
+            <p>Advocacy office providing guides, resources, and accessible tools to help you navigate systems of involuntary care in BC.</p>
+        </a>
+
+        <!-- Plain Language Guide -->
+        <a href="https://www2.gov.bc.ca/assets/gov/health/about-bc-s-health-care-system/heath-care-partners/colleges-board-and-commissions/mental-health-review-board/mha_plain.pdf" target="_blank" class="resource-card card-right">
+            <div class="resource-icon">
+                <!-- Guidebook icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#125D0D" viewBox="0 0 24 24">
+                    <path d="M4 2h12a2 2 0 0 1 2 2v18l-6-4-6 4V4a2 2 0 0 1 2-2z"/>
+                </svg>
+            </div>
+            <h3>Plain-Language Guide</h3>
+            <p>A clear and accessible guide to the MHA legislation in BC</p>
+        </a>
+    </div>
+</section>
 <br>
 
 <!-- FOOTER -->
@@ -1368,24 +1609,6 @@ As we are not part of your treatment team, we are uninvolved in decisions regard
     <p style="font-size: 16px; margin-bottom: 25px;">
         Kind regards,<br>
         <strong>The IRAS Team</strong>
-    </p>
-
-    <!-- Website Button -->
-    <p style="margin-bottom: 20px;">
-        <a href="https://www.irasbc.ca" target="_blank" style="
-            display: inline-block;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #125D0D; /* Dark Green Text */
-            background: #EAAA00; /* Mustard Yellow */
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.2s;
-        " onmouseover="this.style.background='#FFD700'; this.style.transform='scale(1.05)';" 
-           onmouseout="this.style.background='#EAAA00'; this.style.transform='scale(1)';">
-            Visit our website
-        </a>
     </p>
 <p style="color: #125D0D;">&copy; Asmeetha Subramaniam 2026. All rights reserved.</p>
 
