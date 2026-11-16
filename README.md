@@ -1,10 +1,12 @@
 
 
-                <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Ensure mobile-friendly scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Your Legal Rights - IRAS Guide</title>
 
     <!-- Load Poppins Font -->
@@ -75,31 +77,41 @@
         }
 
         /* NAVIGATION */
-        .nav-bar {
-            background: #FFFFFF;
-            padding: 15px 50px;
-            border-radius: 4px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+     .nav-bar {
+    background: #FFFFFF;
+    padding: 12px 30px;
+    border-radius: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex-wrap: nowrap; /* prevents nav from breaking */
+    gap: 15px;
+}
 
         .nav-links {
-            display: flex;
-            gap: 20px;
-        }
+    display: flex;
+    gap: 18px;
+    flex-wrap: nowrap; /* keeps links in one row */
+    overflow-x: auto; /* allows smooth horizontal scrolling on tiny screens */
+  scrollbar-width: none; /* Firefox */
+}
 
-        .nav-link {
-            color: #125D0D;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: opacity 0.2s;
-        }
+.nav-links::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+      .nav-link {
+    color: #125D0D;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(11px, 1.2vw, 14px);
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
 
         .nav-link:hover {
             opacity: 0.8;
@@ -118,6 +130,36 @@
 
         .nav-cta:hover {
             background: #FFD700;
+        }
+
+       .nav-exit-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #c62828, #b71c1c);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: clamp(11px, 1.2vw, 14px);
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-exit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-exit-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-exit-btn:focus {
+            outline: 3px solid rgba(198, 40, 40, 0.4);
+            outline-offset: 2px;
         }
 
         /* CONTENT */
@@ -159,14 +201,14 @@
         #rights .section-icon { background: #EAAA00; }
         #forms .section-icon { background: #8A9A5B; }
         #faqs .section-icon { background: #125D0D; }
+#contacts .section-icon { background: #8A9A5B; } /* or #125D0D / #EAAA00 */
+#resources .section-icon { background: #125D0D; } /* pick from your brand colors */
 
         .section-header h2 {
             color: #125D0D;
             font-size: 24px;
             font-weight: 700;
         }
-
-/* CRITERIA GRID */
 
         /* Buttons inside cards */
         .card-btn {
@@ -192,91 +234,55 @@
             gap: 10px;
         }
 
-.right-item {
-    border: 1px solid #445667;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #EAAA00;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-}
-.right-header:hover {
-    background: #556b7f;
-    color: white;
-}
-
-.right-item:hover {
-    transform: translateY(-2px);
-    border-color: #445667;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.right-header {
-    background: #dce7f1;
-    padding: 18px 20px;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #556b7f;
-    transition: background 0.2s;
-}
-
-
-.right-content {
-    display: none;
-    padding: 15px 20px;
-    background: white;
-    font-size: 14px;
-}
-
-.right-content.open {
-    display: block;
-    border-top: none;
-}
-
-        /* CHECKLIST */
-        .checklist-box {
-            background: #FFF8E1;
-            border: 2px solid #EAAA00;
-            padding: 25px;
+        .right-item {
+            border: 1px solid #445667;
             border-radius: 8px;
+            overflow: hidden;
+            background: #EAAA00;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
 
-        .checklist-item {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
-            background: white;
-            padding: 10px;
-            border-radius: 4px;
+        .right-item:hover {
+            transform: translateY(-2px);
+            border-color: #445667;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .right-header {
+            background: #dce7f1;
+            padding: 18px 20px;
             cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #556b7f;
+            transition: background 0.2s;
         }
 
-        .checklist-item:hover {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .right-header:hover {
+            background: #556b7f;
+            color: white;
+        }
+
+        .right-content {
+            display: none;
+            padding: 15px 20px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .right-content.open {
+            display: block;
+            border-top: none;
         }
 
         /* CONTACTS */
-       .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-}
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
 
         .contact-card {
             background: #FFFF;
@@ -290,26 +296,27 @@
             color: #125D0D;
             margin-bottom: 10px;
         }
-.contact-phone {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
 
-.phone-icon {
-    width: 14px;
-    height: 14px;
-    fill: #EAAA00;
-}
+        .contact-phone {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
 
-.contact-phone a {
-    color: #125D0D;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-}
+        .phone-icon {
+            width: 14px;
+            height: 14px;
+            fill: #EAAA00;
+        }
+
+        .contact-phone a {
+            color: #125D0D;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
 
         .contact-btn {
             display: inline-block;
@@ -326,11 +333,11 @@
             background: #4A148C;
         }
 
-      .faq-section {
-    padding: 40px 0;
-    background: white;
-    border-radius: 8px;
-}
+        .faq-section {
+            padding: 40px 0;
+            background: white;
+            border-radius: 8px;
+        }
 
         /* FOOTER */
         .footer {
@@ -343,7 +350,8 @@
         }
 
         /* Accessibility */
-        .card-btn:focus, .contact-btn:focus {
+        .card-btn:focus,
+        .contact-btn:focus {
             outline: 3px solid #125D0D;
             outline-offset: 2px;
         }
@@ -353,167 +361,629 @@
             .nav-bar, .card-btn, .contact-btn { display: none; }
             .right-content { display: block !important; }
             .criteria-grid { grid-template-columns: 1fr; }
+        }
 
-}
-/* FORMS GRID */
-/* Apply Poppins globally */
-body, button, p, h2, h3, h4 {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-/* Brand Theme Colors */
-:root {
-    --brand-light: #f0f7f4; /* very light green */
-    --brand-primary: #125D0D; /* dark green */
-    --brand-secondary: #e6f0ea; /* soft green */
-    --brand-text: #333;
-}
+        /* Apply Poppins globally */
+        body, button, p, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-.forms-group {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    background: var(--brand-light);
-}
+        /* Brand Theme Colors */
+        :root {
+            --brand-light: #f0f7f4;
+            --brand-primary: #125D0D;
+            --brand-secondary: #e6f0ea;
+            --brand-text: #333;
+        }
 
-.form-box-toggle {
-    width: 100%;
-    background: var(--brand-secondary);
-    border: none;
-    padding: 15px;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 10px 10px 0 0;
-}
-.form-box-toggle:hover {
-    background: #d4e5d7;
-}
+        /* FORMS GRID */
+        .forms-group {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: var(--brand-light);
+        }
 
-.form-box-header h3 {
-    margin: 0;
-    font-size: 18px;
-    color: var(--brand-primary);
-}
-.form-box-header p {
-    margin: 2px 0 0;
-    font-size: 14px;
-    color: var(--brand-text);
-}
-.form-box-header {
+        .form-box-toggle {
+            width: 100%;
+            background: var(--brand-secondary);
+            border: none;
+            padding: 15px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .form-box-toggle:hover {
+            background: #d4e5d7;
+        }
+
+        .form-box-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--brand-primary);
+        }
+
+        .form-box-header p {
+            margin: 2px 0 0;
+            font-size: 14px;
+            color: var(--brand-text);
+        }
+
+        .form-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-box-content {
+            padding: 15px;
+            background: white;
+            display: none;
+            border-top: 1px solid #ccc;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .form-item {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: var(--brand-secondary);
+        }
+
+        .form-item h4 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            color: var(--brand-primary);
+        }
+
+        .form-item p {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: var(--brand-text);
+        }
+
+        .form-pdf-button {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--brand-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-pdf-button:hover {
+            background-color: #0f490a;
+        }
+
+        .small-button {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        /* FAQ Question Cards */
+        #faqs .right-item {
+            border: 1px solid #445667;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #EAAA00;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        #faqs .right-item:hover {
+            transform: translateY(-2px);
+            border-color: #445667;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: #556b7f;
+            color: #232e38;
+        }
+
+        #faqs .right-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #faqs .right-content {
+            background: #ffffff !important;
+            padding: 15px 20px;
+            display: none;
+            border-top: 1px solid #cde0ce;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* --- Criteria Cards Fix for Equal Closed Height + Arrows --- */
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .criteria-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--brand-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+.criteria-toggle {
+    min-height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.form-box-content {
-    padding: 15px;
-    background: white;
-    display: none;
-    border-top: 1px solid #ccc;
-    border-radius: 0 0 10px 10px;
-}
-
-.form-item {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: var(--brand-secondary);
-}
-
-.form-item h4 {
-    margin: 0 0 5px;
+flex-wrap: nowrap;
+    gap: 12px;
+    padding: 20px;
     font-size: 16px;
+    font-weight: 600;
     color: var(--brand-primary);
+    background: var(--brand-secondary);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
 }
 
-.form-item p {
-    margin: 0 0 8px;
-    font-size: 14px;
-    color: var(--brand-text);
+        .criteria-toggle:hover {
+            background: #EAAA00;
+            color: var(--brand-primary);
+        }
+
+        .criteria-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            font-size: 14px;
+            color: var(--brand-text);
+            background: transparent;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .criteria-content.open {
+            max-height: 500px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* UNIVERSAL CHEVRON */
+       .chevron {
+    width: 12px;
+    height: 12px;
+            border-right: 2px solid var(--brand-primary);
+            border-bottom: 2px solid var(--brand-primary);
+            transform: rotate(45deg); /* closed state: pointing down-right */
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        /* Active state rotation */
+        .criteria-toggle.active .chevron,
+        .form-box-toggle.active .chevron,
+        .right-header.active .chevron {
+            transform: rotate(-135deg); /* open state: pointing up-right */
+        }
+
+        /* MOBILE RESPONSIVE FIXES */
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Container full width */
+            .container {
+                max-width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .nav-links {
+    flex-wrap: nowrap;
+    gap: 12px;
 }
 
-.form-pdf-button {
-    display: inline-block;
-    padding: 6px 12px;
-    background-color: var(--brand-primary);
-    color: #fff;
-    text-decoration: none;
+            .nav-link {
+    font-size: 12px;
+}
+.nav-links {
+    position: relative;
+}
+
+/* NAVIGATION BAR - DESKTOP & MOBILE CLEAN */
+.nav-bar {
+    display: flex;
+    justify-content: space-between; /* links left, exit right */
+    align-items: center;            /* vertically center */
+    padding: 12px 30px;
+    background: #fff;
     border-radius: 4px;
-    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-.form-pdf-button:hover {
-    background-color: #0f490a;
+
+/* Nav links container */
+.nav-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: nowrap;          /* keep in one row */
+    overflow-x: auto;           /* horizontal scroll if needed */
+    max-width: calc(100% - 120px); /* leave space for Exit button */
+    scrollbar-width: none;      /* hide scrollbar Firefox */
 }
-.small-button {
-    padding: 4px 8px; /* smaller than default */
-    font-size: 12px;  /* smaller text */
+
+.nav-links::-webkit-scrollbar {
+    display: none;              /* hide scrollbar Chrome/Safari */
 }
+
+/* Nav links style */
+.nav-link {
+    color: #125D0D;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(11px, 1.2vw, 14px);
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Exit button */
 .nav-exit-btn {
-    display: inline-block;
+    flex-shrink: 0;             /* do not shrink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(135deg, #c62828, #b71c1c);
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 6px 14px;
     border-radius: 999px;
     font-weight: 600;
-    text-decoration: none;
-    font-size: 14px;
+    font-size: clamp(11px, 1.2vw, 14px);
     letter-spacing: 0.3px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .nav-exit-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
-
 .nav-exit-btn:active {
     transform: translateY(0);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
-
 .nav-exit-btn:focus {
-    outline: 3px solid rgba(198, 40, 40, 0.4);
+    outline: 3px solid rgba(198,40,40,0.4);
     outline-offset: 2px;
 }
-/* -------------------------
-   FAQ Question Cards
-------------------------- */
-#faqs .right-item {
-  border: 1px solid #445667;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #EAAA00;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 500px) {
+    .nav-bar {
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .nav-links {
+        max-width: calc(100% - 80px); /* keep space for exit button */
+        gap: 12px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+    }
+
+    .nav-exit-btn {
+        padding: 4px 10px;
+        font-size: 10px;
+        min-width: 40px;
+        min-height: 28px;
+    }
 }
-#faqs .right-item:hover {
-    transform: translateY(-2px);
-    border-color: #445667;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    background: #556b7f;
-    color: #232e38;
+.section-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* --- MOBILE NAVIGATION SCROLL HINT --- */
+@keyframes swipeHint {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-5px); }
+  50%  { transform: translateX(10px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
 
+@media (max-width: 500px) {
+  .nav-links a:first-child {
+    display: inline-block; /* needed for transform */
+    animation: swipeHint 1.5s ease-in-out 1; /* runs once */
+  }
+}
+            
+            .content {
+                padding: 20px;
+            }
 
-#faqs .right-header {
-    padding: 15px 20px;
-    cursor: pointer;
+            .criteria-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+/* Base diagram styling */
+.stay-diagram {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stay-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stay-row {
+    display: flex;
+    justify-content: space-between;
+    border-left: 6px solid #125D0D;
+    padding: 15px;
+    flex-wrap: wrap; /* allows wrapping on small screens */
+    gap: 10px;
+}
+
+.stay-row.yellow { border-left-color: #EAAA00; }
+.stay-row.green { border-left-color: #8A9A5B; }
+
+@media (max-width: 500px) {
+    .stay-row {
+        flex-direction: column;
+        padding-left: 12px;
+        padding-right: 12px;
+        gap: 6px;
+    }
+
+    .stay-row div {
+        width: 100%;
+        text-align: left;
+    }
+}
+<style>
+/* ===== LEARNING CARDS CAROUSEL ===== */
+.learning-section {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.section-header {
+    margin-bottom: 10px;
+}
+
+.learning-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.learning-grid::-webkit-scrollbar {
+    height: 6px;
+}
+.learning-grid::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+/* Cards */
+.learning-card {
+    flex: 0 0 220px;
+    min-height: 160px;
+    padding: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #5f9e8f, #2c5f5d);
+    border: 2px solid #2c5f5d;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    scroll-snap-align: center;
+}
+
+.learning-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
     font-weight: 600;
-    color: #FF8C00
-    border-radius: 8px 8px 0 0;
-   }
-
-#faqs .right-content {
-    background: #white !important;   /* lighter green for content box */
-    padding: 15px 20px;
-    display: none;                     /* hidden until clicked */
-    border-top: 1px solid #cde0ce;
-    border-radius: 0 0 8px 8px;
 }
+
+.learning-card p {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.learning-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3);
+}
+
+/* Interactive arrow */
+.learning-card::after {
+    content: "↗";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.learning-card:hover::after {
+    transform: translate(3px, -3px);
+}
+
+/* Health Justice card (center, larger) */
+.learning-card.health-justice {
+    flex: 0 0 300px; /* larger than side cards */
+    background: linear-gradient(135deg, #f08c5f, #d94f3d);
+    border: 2px solid #d94f3d;
+}
+
+.learning-card.health-justice:hover {
+    background: linear-gradient(135deg, #ff9966, #d94f3d);
+}
+
+/* Contact card (theme-matching) */
+.learning-card.contact {
+    background: linear-gradient(135deg, #4b7f7f, #2c5f5d);
+    border: 2px solid #2c5f5d;
+}
+
+.learning-card.contact:hover {
+    background: linear-gradient(135deg, #5f9e8f, #2c5f5d);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .learning-card {
+        flex: 0 0 180px;
+    }
+    .learning-card.health-justice {
+        flex: 0 0 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    .learning-grid {
+        gap: 15px;
+        padding: 15px 0;
+    }
+    .learning-card {
+        flex: 0 0 160px;
+        padding: 15px;
+    }
+    .learning-card.health-justice {
+        flex: 0 0 200px;
+    }
+}
+/* RESOURCE CARDS */
+.resource-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.resource-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
+    min-width: 200px;
+    color: white;
+}
+
+/* Individual Card Colors */
+.card-left { background: #125D0D; }
+.card-center { background: #8A9A5B; flex: 1.2; min-width: 240px; }
+.card-right { background: #EAAA00; color: #125D0D; }
+
+.resource-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Icon */
+.resource-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+/* Titles */
+.resource-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Descriptions */
+.resource-card p {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .resource-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .card-center { min-width: auto; flex: none; }
+}
+</style>
     </style>
+
 </head>
 
 <body>
@@ -532,241 +1002,86 @@ body, button, p, h2, h3, h4 {
                 <a href="#rights" class="nav-link">What are my Rights?</a>
                 <a href="#forms" class="nav-link">MHA Forms</a>
                 <a href="#faqs" class="nav-link">FAQs</a>
-<a href="#contacts" class="nav-link">Resources</a>
+                <a href="#contacts" class="nav-link">Resources</a>
             </div>
-     <a href="#" class="nav-exit-btn" id="exitButton" aria-label="Quickly exit this website">
-    Exit Site
-</a>
+            <a href="#" class="nav-exit-btn" id="exitButton" aria-label="Quickly exit this website">
+                Exit Site
+            </a>
         </nav>
 
         <div class="content">
             <!-- INTRO -->
             <div class="intro-box">
                 <p><strong>
+                    Thank you for meeting with a Rights Advisor today. We appreciate you taking the time to speak with us.
+                </strong><br>
+                Below is a general summary of what we discussed and includes important reminders and resources for your reference. You are welcome to review this at your own pace and share it with someone you trust, if that is helpful.
+                </p>
+            </div><br>
 
-Thank you for meeting with a Rights Advisor today. We appreciate you taking the time to speak with us.</strong><br>
-Below is a general summary of what we discussed and includes important reminders and resources for your reference. You are welcome to review this at your own pace and share it with someone you trust, if that is helpful.
-</p>
-            </div>
-<!-- CRITERIA SECTION -->
-<section id="criteria">
-    <div class="section-header">
-        <div class="section-icon">1</div>
-        <h2>Why was I admitted?</h2>
-    </div>
-    <p style="margin-bottom: 20px;">
-        The Mental Health Act says a doctor or nurse practitioner can make you an involuntary patient if they examine you, and are of the <b><i>opinion</i></b> that you:
-    </p>
+            <!-- CRITERIA SECTION (Section 1) -->
+            <section id="criteria">
+                <div class="section-header">
+                    <div class="section-icon">1</div>
+                    <h2>Why was I admitted?</h2>
+                </div>
+                <p style="margin-bottom: 20px;">
+                    The Mental Health Act says a doctor or nurse practitioner can make you an involuntary patient if they examine you, and are of the <b><i>opinion</i></b> that you:
+                </p>
 
-    <div class="criteria-grid">
+                <div class="criteria-grid">
 
-        <!-- CRITERIA ITEM 1 -->
-        <div class="criteria-card">
-            <button class="criteria-toggle">
-                <span>1. Have a mental disorder that is seriously impairing your ability to interact with your environment and others</span>
-                <span class="chevron"></span>
-            </button>
-            <div class="criteria-content">
-               <br> <p>This means the doctor believes you are experiencing a mental health condition that affects your thinking, mood, or behaviour.</p><br><br>
-            </div>
-        </div>
+                    <!-- CRITERIA ITEM 1 -->
+                    <div class="criteria-card">
+                        <button class="criteria-toggle">
+                            <span>1. Have a mental disorder that is seriously impairing your ability to interact with your environment and others</span>
+                            <span class="chevron"></span>
+                        </button>
+                        <div class="criteria-content">
+                            <p>This means the doctor believes you are experiencing a mental health condition that affects your thinking, mood, or behaviour.</p>
+                        </div>
+                    </div>
 
-        <!-- CRITERIA ITEM 2 -->
-        <div class="criteria-card">
-            <button class="criteria-toggle">
-                <span>2. Need psychiatric treatment in or through a facility</span>
-              <span class="chevron"></span>
-            </button>
-            <div class="criteria-content">
-               <br> <p>This means the doctor believes you need treatment in a hospital setting to help improve or stabilize your mental health.</p><br><br>
-            </div>
-        </div>
+                    <!-- CRITERIA ITEM 2 -->
+                    <div class="criteria-card">
+                        <button class="criteria-toggle">
+                            <span>2. Need psychiatric treatment in or through a facility</span>
+                            <span class="chevron"></span>
+                        </button>
+                        <div class="criteria-content">
+                            <p>This means the doctor believes you need treatment in a hospital setting to help improve or stabilize your mental health.</p>
+                        </div>
+                    </div>
 
-        <!-- CRITERIA ITEM 3 -->
-        <div class="criteria-card">
-            <button class="criteria-toggle">
-                <span>3. Have to be in a facility, or supervised, to protect yourself or others</span>
-               <span class="chevron"></span>
-            </button>
-            <div class="criteria-content">
-               <br> <p>This may include concerns that (a) you could harm yourself or someone else, <i>or</i> (b) your mental and/or physical health could get much worse if you do not receive treatment.</p><br><br>
-            </div>
-        </div>
+                    <!-- CRITERIA ITEM 3 -->
+                    <div class="criteria-card">
+                        <button class="criteria-toggle">
+                            <span>3. Have to be in a facility, or supervised, to protect yourself or others</span>
+                            <span class="chevron"></span>
+                        </button>
+                        <div class="criteria-content">
+                            <p>This may include concerns that (a) you could harm yourself or someone else, <i>or</i> (b) your mental and/or physical health could get much worse if you do not receive treatment.</p>
+                        </div>
+                    </div>
 
-        <!-- CRITERIA ITEM 4 -->
-        <div class="criteria-card">
-            <button class="criteria-toggle">
-                <span>4. Can't be admitted as a voluntary patient at this time</span>
-                <span class="chevron"></span>
-            </button>
-            <div class="criteria-content"> <br>
-                <p>This means the doctor believes you may not understand or accept the need for treatment at this time.</p> <br><br>
-            </div>
-        </div>
+                    <!-- CRITERIA ITEM 4 -->
+                    <div class="criteria-card">
+                        <button class="criteria-toggle">
+                            <span>4. Can't be admitted as a voluntary patient at this time</span>
+                            <span class="chevron"></span>
+                        </button>
+                        <div class="criteria-content">
+                            <p>This means the doctor believes you may not understand or accept the need for treatment at this time.</p>
+                        </div>
+                    </div>
 
-    </div>
-<br>
+                </div>
 
-    <p style="margin-top: 20px;">
-        <b>All four</b> of these conditions must be met <b>at the same time</b> for involuntary admission to continue. These decisions are based on the doctor’s <i>medical opinion</i> and may change as your situation changes.
-    </p>
-</section>
-<br>
-
-<!-- --- Styles --- -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-:root {
-    --brand-light: #f0f7f4;
-    --brand-primary: #125D0D;
-    --brand-secondary: #e6f0ea;
-    --brand-text: #333;
-}
-
-body, button, p, h2, h3, h4 {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-/* --- Criteria Cards Fix for Equal Closed Height --- */
-
-/* Grid: stretch cards in a row */
-.criteria-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-     align-items: start; /* force cards to use their own height */
-}
-/* Card container */
-.criteria-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--brand-secondary); /* green when closed */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #e0e0e0;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Toggle button fills visible card space */
-.criteria-toggle {
-    min-height: 130px; /* adjust to match tallest card */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--brand-primary);
-    background: var(--brand-secondary);
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.criteria-toggle:hover {
-    background: #EAAA00;
-    color: var(--brand-primary);
-}
-
-/* Collapsible content */
-.criteria-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    font-size: 14px;
-    color: var(--brand-text);
-    background: transparent;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.criteria-content.open {
-    max-height: 500px; /* adjust if content taller */
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 0 0 8px 8px;
-}
-
-/* Chevron rotation */
-.chevron {
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid var(--brand-primary);
-    border-bottom: 2px solid var(--brand-primary);
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-}
-
-.criteria-toggle.active .chevron {
-    transform: rotate(-135deg);
-}
-
-/* Responsive grid */
-@media (max-width: 768px) {
-    .criteria-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.criteria-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    font-size: 14px;
-    color: var(--brand-text);
-    background: transparent;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.criteria-content.open {
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 0 0 8px 8px;
-}
-
-/* UNIVERSAL CHEVRON */
-.chevron {
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid var(--brand-primary);
-    border-bottom: 2px solid var(--brand-primary);
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-}
-
-/* Active state rotation */
-.criteria-toggle.active .chevron,
-.form-box-toggle.active .chevron,
-.right-header.active .chevron {
-    transform: rotate(-135deg);
-}
-</style>
-
-<!-- --- Script --- -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const toggles = document.querySelectorAll('.criteria-toggle');
-
-    toggles.forEach(toggle => {
-        toggle.addEventListener('click', () => {
-            const content = toggle.nextElementSibling;
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
-
-            if (isOpen) {
-                content.style.maxHeight = "0";
-                toggle.classList.remove('active');
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                toggle.classList.add('active');
-            }
-        });
-    });
-});
-</script>
-<br>
+                <p style="margin-top: 20px;">
+                    <b>All four</b> of these conditions must be met <b>at the same time</b> for involuntary admission to continue. These decisions are based on the doctor’s <i>medical opinion</i> and may change as your situation changes.
+                </p>
+            </section>
+<br><br>
 
             <!-- RIGHTS SECTION -->
             <section id="rights" style="scroll-margin-top: 100px;">
@@ -795,7 +1110,7 @@ of the facility in which you are being detained.
                             2. Meet with a Rights Advisor <span class="chevron"></span>
                         </div>
                         <div class="right-content">
-                            That's us! Thank you for meeting with us. <br> Our role is to explain your rights, answer questions, and provide options. You're eligible for one Rights meeting every certification period. Tell a member of your treatment team if you want to meet with a Rights Advisor. <br> <br>
+                            That's us! Thank you for meeting with us. <br><br> Our role is to explain your rights, answer questions, and support you in understanding your options. You're eligible for one Rights meeting every certification period. Tell a member of your treatment team if you want to meet with a Rights Advisor or click the link below to visit our website. <br> <br>
 <a href="https://irasbc.ca/" target="_blank" class="card-btn">IRAS</a>
 </div>
 </div>
@@ -806,10 +1121,10 @@ of the facility in which you are being detained.
 been made an involuntary patient <span class="chevron"></span>
                         </div>
                         <div class="right-content">
-                           The doctor or nurse practitioner must clearly explain why they believe you meet all four criteria. These reasons must be written on your medical certificate (Form 4.1 or Form 4.2). If your certification is renewed, the reasons must be included on the renewal certificate (Form 6). <br>You have the
+                           The doctor or nurse practitioner must clearly explain why they believe you meet all four criteria. These reasons must be written on your medical certificate (Form 4.1 or Form 4.2). If your certification is renewed, the reasons must be included on the renewal certificate (Form 6). <br><br>You have the
 right to know what is on your certificate. Ask a member of your treatment
-team to see your certificate(s) or have the contents read aloud to you. <br> <br> 
-<a href="https://www2.gov.bc.ca/assets/gov/health/forms/3504_1_fil.pdf" target="_blank" class="card-btn">Form 4.1 
+team to see your certificate(s) or have the contents read aloud to you. Please click the links below to access Forms 4.1, 4.2 and 6. <br> <br> 
+<a href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/17_2023_Form4.1" target="_blank" class="card-btn">Form 4.1 
 <br></a>
 <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3504_2_fil.pdf" target="_blank" class="card-btn">Form 4.2  
 <br></a>
@@ -835,7 +1150,7 @@ have the option of continuing treatment as a voluntary patient.
                             5. Request a Second Medical Opinion <span class="chevron"></span>
                         </div>
                         <div class="right-content">
-                            If you do not agree with your mental health treatment, you can ask for another doctor to give a second opinion on your treatment.<br> <br>
+                            If you do not agree with your mental health treatment, you can ask for another doctor to give a second opinion on your treatment. Please click the link below to see Form 11. <br> <br>
 <a href="https://www.bcmhrb.ca/app/uploads/sites/431/2018/11/Form-11.pdf" target="_blank" class="card-btn"> Form 11</a>
 
                         </div>
@@ -846,18 +1161,17 @@ have the option of continuing treatment as a voluntary patient.
                             6. A Review Panel Hearing <span class="chevron"></span>
                         </div>
                         <div class="right-content">
-                            You have the right to apply for a review panel hearing with the Mental Health Review Board. Review panels have three people who will hear your case and decide if you still meet all four criteria to be an involuntary patient.
+                            You have the right to apply for a review panel hearing with the Mental Health Review Board. Review panels have three people who will hear your case and decide if you still meet all four criteria to be an involuntary patient. Please visit the link below to access a copy of Form 7 and/or to visit the Mental Health Review Board website.
 <br><br>
 <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3507fil.pdf" target="_blank" class="card-btn"> Form 7</a>
-<br><br>
+<a href="https://clasbc.net/get-legal-help/mental-health-law/" target="_blank" class="card-btn">Visit MHLP Website</a><br><br>
 
                         
 When you apply for a hearing, you can ask for free legal help from the Mental
-Health Law Program. They can connect you with a legal representative to help
+Health Law Program (linked below). They can connect you with a legal representative to help
 prepare your case and represent you. 
                             <br><br>
 <a href="https://www.bcmhrb.ca" target="_blank" class="card-btn">Visit Review Board Website</a><br><br>
-<a href="https://clasbc.net/get-legal-help/mental-health-law/" target="_blank" class="card-btn">Visit MHLP Website</a>
                         </div>
                     </div>
 
@@ -867,10 +1181,25 @@ prepare your case and represent you.
                         </div>
 
                         <div class="right-content">
-                            You have the right to contact a lawyer at all times. The facility must provide access to a phone and a private room to call.<br>
-<a href="tel:18442351338" class="contact-btn">Legal Aid BC – Mental Health Assistance Line</a>
-                    </div>
+                            You have the right to contact a lawyer at all times. The facility must provide access to a phone and a private room to call. <br><br>
+                           Legal Aid's <b> Mental Health Assistance Line </b><br>
+<div class="contact-phone">
+    <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M22 16.92V19a2 2 0 0 1-2.18 2
+        19.86 19.86 0 0 1-8.63-3.07
+        19.5 19.5 0 0 1-6-6
+        19.86 19.86 0 0 1-3.07-8.67
+        A2 2 0 0 1 4 2h2.09a2 2 0 0 1 2 1.72
+        c.12.89.37 1.76.73 2.59
+        a2 2 0 0 1-.45 2.11L7.09 9.91
+        a16 16 0 0 0 6 6l1.49-1.28
+        a2 2 0 0 1 2.11-.45
+        c.83.36 1.7.61 2.59.73
+        A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <a href="tel:18442351338">1-844-235-1338</a></div>
 </div>
+                    </div>
 <div class="right-item">
                         <div class="right-header">
                            8. Apply to the court for a
@@ -879,15 +1208,15 @@ judge to review your case <span class="chevron"></span>
 
                         <div class="right-content">
                             There are three court processes for challenging your involuntary detention: <br><br>
-<b> Judicial review:  </b> If you are not satisfied with the decision of your review panel hearing, you have the right to apply to a judge to investigate the panel's decision for any errors of procedural fairness.<br>
-<b>Section 33 application: </b> You have the right to ask the court to review your doctor’s decision to keep you in the facility as an involuntary patient.  <br>
+<b> Judicial review:  </b> If you are not satisfied with the decision of your review panel hearing, you have the right to apply to a judge to investigate the panel's decision for any errors of procedural fairness.<br><br>
+<b>Section 33 application: </b> You have the right to ask the court to review your doctor’s decision to keep you in the facility as an involuntary patient.  <br><br>
 <b>Habeas Corpus application: </b> You have the right to apply to the court to ask a judge if your medical certificates are in order. <br> <br>
 As with all of the court procedures, it is best that you are supported and/or represented by a lawyer.
 
 
                         </div>
                     </div>
-            </section>
+            </section><br>
 <!-- FORMS SECTION -->
 <section id="forms" style="scroll-margin-top: 50px; margin-top: 40px;">
 
@@ -915,7 +1244,7 @@ As with all of the court procedures, it is best that you are supported and/or re
             <div class="form-item">
                 <h4>Form 4.1: First Medical Certificate</h4>
                 <p>Certifies a patient as involuntary for up to 48 hours as part of the initial assessment.</p>
-                <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3504_1fil.pdf" target="_blank" class="form-pdf-button">View PDF</a>
+                <a href="https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/17_2023_Form4.1" target="_blank" class="form-pdf-button">View PDF</a>
             </div>
             <div class="form-item">
  <h4>Form 4.2: First Medical Certificate</h4>
@@ -944,6 +1273,11 @@ As with all of the court procedures, it is best that you are supported and/or re
                 <h4>Form 13: Rights Notification</h4>
                 <p>This explains your legal rights if you are involuntarily admitted. You should receive this form upon certification as an involuntary patient.</p>
                 <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3513_1_fil.pdf" target="_blank" class="form-pdf-button">View PDF</a>
+            </div>
+ <div class="form-item">
+                <h4>Form 15: Nomination of Near Relative</h4>
+                <p>This form allows you to choose which relative will be notified of your admission, review panel hearing, and/or discharge.</p>
+                <a href="https://www2.gov.bc.ca/assets/gov/health/forms/3515fil.pdf" target="_blank" class="form-pdf-button">View PDF</a>
             </div>
  <div class="form-item">
                 <h4>Form 20: Extended Leave Authorization</h4>
@@ -994,21 +1328,6 @@ As with all of the court procedures, it is best that you are supported and/or re
     </div>
 
 </section>
-
-<!-- SCRIPT FOR COLLAPSIBLE BOXES -->
-<script>
-document.querySelectorAll('.form-box-toggle').forEach(button => {
-    button.addEventListener('click', function() {
-        const content = this.nextElementSibling;
-        const isOpen = content.style.display === 'block';
-
-        content.style.display = isOpen ? 'none' : 'block';
-        this.classList.toggle('active', !isOpen);
-    });
-});
-</script>
-
-
 <!-- FAQ SECTION -->
 <section id="faqs" class="faq-section">
     <div class="section-header">
@@ -1023,12 +1342,8 @@ document.querySelectorAll('.form-box-toggle').forEach(button => {
                 What is a Rights Advisor and can they help me get discharged? <span class="chevron"></span>
             </div>
             <div class="right-content">
-           Rights Advisors are independent of the hospital and your healthcare team. Our role is to provide you with legal information about your rights under British Columbia’s Mental Health Act and to support you in understanding your options. <br><br>
-Our service is confidential and independent. Information from your meeting is not shared with your treatment team unless you ask us to do so or unless required by law.<br><br>
-
-What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide legal advice or advocate on your behalf. This means we cannot attend meetings with your doctor or treatment team to advocate on your behald. <br> We are also not part of your healthcare team, so we are not involved in decisions regarding your involuntary certification. This means we are not involved in your involuntary admission, psychiatric treatment or matters related to your discharge.
-
-                <br><br>
+         Rights Advisors provide an independent and confidential service. Our role is to provide you with legal information about your rights under British Columbia’s Mental Health Act and to support you in understanding your options. <br><br>
+As we are not part of your treatment team, we are uninvolved in decisions regarding your involuntary certification. This means we are not involved in your involuntary admission, psychiatric treatment or matters related to your discharge. 
             </div>
         </div>
 
@@ -1038,7 +1353,7 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
                 Do I have to take the medication they are giving me? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                Under British Columbia’s Mental Health Act, if you are certified as an involuntary patient, psychiatric treatment for your mental disorder can be provided without your consent. This can feel overwhelming or upsetting, especially if you disagree with the treatment plan. You still have the right to ask questions about the medication, including what it is for, the benefits, and possible side effects. 
+                Under British Columbia’s Mental Health Act, if you are certified as an involuntary patient, psychiatric treatment for your mental disorder can be provided without your consent. You still have the right to ask questions about the medication, including what it is for, the benefits, and possible side effects. You retain the right to refuse and/or consent to non-psychiatric medication.
                 <br><br>
                 Remember, that it is also your legal right to request a second medical opinion by submitting Form 11. Treatment must be medically appropriate and connected to your mental disorder. Your concerns and experiences matter, and you are entitled to be treated with dignity and respect.
             </div>
@@ -1052,10 +1367,7 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
             <div class="right-content">
                <b> Voluntary admission </b>refers to an individual that has willingly sought psychiatric treatment for their mental illness at a healthcare facility. Voluntary patients retain their legal right to refuse/consent to psychiatric medication and request to be discharged from the healthcare facility.<br><br>
 
-               <b> Involuntary admission </b>occurs when a doctor or nurse practitioner determines that an individual meets all (4) of the involuntary admission criteria required for certification as an involuntary patient. When admitted as an involuntary patient, patients cannot refuse psychiatric treatment or leave the hospital without authorization while they are certified.. <br><br>
-
-                A key difference between the two is legal rights and decision-making authority. <br>
-                Voluntary patients keep the right to make their own treatment decisions, including whether to take psychiatric medication and when to ask to leave the hospital (subject to clinical review if there are safety concerns). In contrast, involuntary patients are admitted under the legal authority of the Mental Health Act because a clinician believes the legal criteria are met. This means certain rights are temporarily limited as they cannot leave the hospital or refuse psychiatric treatment while certified. <br>
+               <b> Involuntary admission </b>occurs when a doctor or nurse practitioner determines that an individual meets all (4) of the involuntary admission criteria required for certification as an involuntary patient. When admitted as an involuntary patient, patients cannot refuse psychiatric treatment or leave the hospital without authorization while they are certified. <br><br>
 
                 However, being involuntary does not mean losing all rights. Involuntary patients still have important legal protections.
             </div>
@@ -1067,60 +1379,48 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
                 How long can they keep me? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                The length of time you can be kept as an involuntary patient depends on the certification process set out in the Act. The first medical certificate (Form 4.1) allows detention for up to 48 hours. If a second certificate (Form 4.2) is completed, detention may continue for up to one month. After that, renewal certificates (Form 6) may extend detention for one month, then three months, and then six months at a time if the legal criteria continue to be met. <br><br>
-                But, remember that it is your legal right to have a doctor reassess you regularly. You must be discharged from involuntary status as soon as a doctor believes the four legal criteria are no longer met.
+                Being in hospital involuntarily can feel confusing and overwhelming. Under the Mental Health Act, you can be kept in hospital for as long as a doctor believes you continue to meet the admission criteria. <br><br>
+
+In some cases, your care may continue outside the hospital on an outpatient basis through something called extended leave. This means a doctor believes you still meet all of the involuntary admission criteria, but that your treatment may be better supported in a community setting.<br><br>
+
+There are set timeframes for review (see diagram below), and you have the right to be reassessed regularly. You must be discharged from involuntary status as soon as a doctor determines that you no longer meet all four criteria.
                 <br><br>
 
-                <div style="margin-top:20px; padding:20px; background:white; border-radius:6px; border:1px solid #ddd;">
-                    <div style="display:flex; justify-content:space-between; border-left:6px solid #125D0D; padding-left:15px; margin-bottom:15px;">
-                        <div>
-                            <strong>First Certificate</strong><br>
-                            Form 4.1
-                        </div>
-                        <div>
-                            Up to 48 hours
-                        </div>
-                    </div>
+<div class="stay-diagram">
+  <div class="stay-row green">
+    <div>
+      <strong>First Certificate</strong><br>Form 4.1
+    </div>
+    <div>Up to 48 hours</div>
+  </div>
 
-                    <div style="display:flex; justify-content:space-between; border-left:6px solid #EAAA00; padding-left:15px; margin-bottom:15px;">
-                        <div>
-                            <strong>Second Certificate</strong><br>
-                            Form 4.2
-                        </div>
-                        <div>
-                            Completes the first one-month certification period
-                        </div>
-                    </div>
+  <div class="stay-row yellow">
+    <div>
+      <strong>Second Certificate</strong><br>Form 4.2
+    </div>
+    <div>Completes the first one-month certification period</div>
+  </div>
 
-                    <div style="display:flex; justify-content:space-between; border-left:6px solid #8A9A5B; padding-left:15px; margin-bottom:15px;">
-                        <div>
-                            <strong>First Renewal</strong><br>
-                            Form 6
-                        </div>
-                  
-                        <div>
-                            One additional month
-</div>
-</div>
-                      <div style="display:flex; justify-content:space-between; border-left:6px solid #8A9A5B; padding-left:15px; margin-bottom:15px;">
+  <div class="stay-row green">
     <div>
-        <strong>Second Renewal</strong><br>
-        Form 6
+      <strong>First Renewal</strong><br>Form 6
     </div>
-    <div>
-        Three months
-    </div>
-</div>
+    <div>One additional month</div>
+  </div>
 
-<div style="display:flex; justify-content:space-between; border-left:6px solid #8A9A5B; padding-left:15px;">
+  <div class="stay-row green">
     <div>
-        <strong>Further Renewals</strong><br>
-        Form 6
+      <strong>Second Renewal</strong><br>Form 6
     </div>
+    <div>Three months</div>
+  </div>
+
+  <div class="stay-row green">
     <div>
-        Six months at a time
+      <strong>Further Renewals</strong><br>Form 6
     </div>
-</div>
+    <div>Six months at a time</div>
+  </div>
 </div>
  </div>
         </div>
@@ -1131,8 +1431,8 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
                 Who decides if I still meet the criteria? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                A doctor or nurse practitioner is responsible for assessing whether you meet the criteria under the MHA. They evaluate your mental state, risk to yourself or others, and whether safe care can be provided outside the facility. 
-                If admitted as an involuntary patient, you have the right to ask questions and be involved in your treatment plan. If you disagree with your detention status as you believe you do not meet all four of the involuntary admission criteria, you have the right to apply for a review panel hearing (Form 7). You also have the right to speak with a lawyer at any time. <br><br>
+                Decisions about whether you continue to meet the criteria are made by medical professionals. A doctor or nurse practitioner can complete the initial Form 4.1. For the remaining certification periods, only a doctor can reassess you and decide whether to renew your involuntary status. <br><br>
+                As an an involuntary patient, you have the right to ask questions and be involved in your treatment plan. If you disagree with your detention status as you believe you do not meet all four of the involuntary admission criteria, you have the right to apply for a review panel hearing (Form 7). You also have the right to speak with a lawyer at any time. <br><br>
             </div>
         </div>
 
@@ -1142,18 +1442,16 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
                 Can I leave the hospital? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                The answer depends on whether you are a voluntary or involuntary patient:<br><br>
-                If you are a <i>voluntary </i>patient,
-                You can ask to leave the hospital at any time. A doctor may assess you before you leave to ensure it is safe. If the doctor believes you meet the criteria for involuntary admission under the Mental Health Act, they may complete a certification to admit you involuntarily.
-                <br><br>
                 If you are an <i>involuntary</i> patient,
-                You cannot leave the hospital without authorization (i.e. passess) while you are certified. However, you still have options:
+                You cannot leave the hospital without authorization (i.e. passess) while you are certified. If you are interested in the possibility of being an involuntary patient in community, please ask your treatment team about Extended Leave (EL).
                 <br><br>
                 •	<b>Extended Leave (Form 17 – Leave Authorization)<br></b>
-                Your doctor may authorize you to live in the community under specific conditions (i.e. attending appointments or taking medication). This is sometimes called “extended leave.” You are still legally certified, but you are not staying in the hospital.
-                If the conditions are not followed, you may be recalled back to the hospital. <br><br>
-                •	<b>Review Panel Hearing (Form 7)<br></b>
-                You have the right to apply to the Review Panel to challenge your certification status. A review panel is an independent decision-making body that will examine whether the legal criteria for detention are met. You also have the right to contact a lawyer. These processes exist to ensure that your detention is lawful and justified. You have every legal right to question or challenge your certification.
+                Your doctor may authorize you to live in the community under specific conditions (i.e. attending appointments or taking medication). This is referred to as 'extended leave.' On extended leave, you are still legally certified, but you are living in the community as an out-patient instead of being an in-patient in hospital.
+               <br><br>
+<i>EL patients are now able to book a Rights Advice meeting directly through our IRAS booking portal at the following link:</i>
+ <a href="https://portal.irasbc.ca/" class="contact-btn" target="_blank"> IRAS Portal
+                </a>
+              
             </div>
         </div>
 
@@ -1163,22 +1461,22 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
                 Can my family get information about me? <span class="chevron"></span>
             </div>
             <div class="right-content">
-                <strong>Notification of a Near Relative (Form 15)</strong>
-                If you are admitted involuntarily, the hospital must notify your “near relative” that you have been admitted. This is usually documented using Form 15: Notification to Near Relative. This notification typically confirms that you have been admitted and the name of the hospital.
-                It does not automatically mean detailed medical information will be shared.<br><br>
-
-               <strong>Sharing Additional Information</strong>
-                As hospitals must follow strict healthcare privacy protocols, detailed information about your diagnosis or treatment generally requires your consent. In limited circumstances, information may be shared without consent if necessary for safety or legal reasons.<br><br>
+                <strong>Nomination and Notification of a Near Relative (Form 15 and 16)</strong>
+                If you are admitted involuntarily, the hospital must notify a “near relative” that you have been admitted. Completing a Form 15: Nomination of Near Relative allows you to choose which relative you would like to be notified about your admission, review panel hearing, and/or discharge status. The hospital will then submit a Form 16: Notification to a Near Relative to notify a near relative of your admission and other important updates, as is required under the Mental Health Act This notification typically confirms that you have been admitted and the name of the hospital. It does not automatically mean detailed medical information will be shared.<br><br>
 
                 It’s common to feel anxious about who knows what. You have a voice in this. While the hospital has a legal duty to notify a near relative of an involuntary admission, your broader medical information remains protected. If family involvement feels supportive, staff can help include them. If it feels unsafe or unwanted, you can raise those concerns and ask about your options.
             </div>
-</section>
+</section><br>
     <!-- CONTACTS -->
   <section id="contacts" style="scroll-margin-top: 100px; margin-top: 10px;">
                 <div class="section-header">
-                    <div class="section-icon">📞</div>
-                    <h2>Resources</h2>
-                </div>
+        <div class="section-icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:white;">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.72 11.72 0 003.68.59 1 1 0 011 1v3.5a1 1 0 01-.91 1 19.91 19.91 0 01-8.89-2.84 19.66 19.66 0 01-6-6A19.91 19.91 0 013 3.81 1 1 0 014 2.9h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.25 1.01z"/>
+    </svg>
+</div>
+        <h2>Contacts</h2>
+    </div>
 
         <div class="contact-grid">
 
@@ -1207,7 +1505,7 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
 
             <div class="contact-card">
                 <h4>Mental Health Law Program</h4>
-                <p>Legal help for review panel hearings and other Mental Health Act issues.</p> <br>
+                <p>Legal help for review panel hearings. </p> <br>
 
 <div class="contact-phone">
     <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1223,7 +1521,7 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
         c.83.36 1.7.61 2.59.73
         A2 2 0 0 1 22 16.92z"/>
     </svg>
-    <a href="1-855-685-6222">1-855-685-6222</a>
+    <a href="tel:18556856222">1-855-685-6222</a>
 </div>
                 <a href="https://clasbc.net/get-legal-help/mental-health-law/" class="contact-btn" target="_blank">
                     Visit Website
@@ -1233,7 +1531,7 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
             <div class="contact-card">
                 <h4>Patient Care Quality Office (PCQO)</h4>
                 <p>For complaints or concerns about the quality of your care in hospital or community.</p> <br>
-                <a href="https://www2.gov.bc.ca/gov/content/health/patient-care-quality-office" class="contact-btn" target="_blank">
+                <a href="https://www.patientcarequalityreviewboard.ca/makecomplaint.html" class="contact-btn" target="_blank">
                     Visit Website
                 </a>
             </div>
@@ -1256,11 +1554,60 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
         c.83.36 1.7.61 2.59.73
         A2 2 0 0 1 22 16.92z"/>
     </svg>
-    <a href="1-800-567-3247">1-800-567-3247</a>
+    <a href="tel:18005673247">1-800-567-3247</a>
 </div>
                 <a href="https://bcombudsperson.ca" class="contact-btn" target="_blank"> Visit Website
                 </a>
             </div>
+</section><br>
+<!-- INTERESTED IN LEARNING MORE SECTION -->
+<section id="resources" style="scroll-margin-top: 100px; margin-top: 40px;">
+    <div class="section-header">
+        <div class="section-icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:white;">
+        <path d="M4 4.5C4 3.67 4.67 3 5.5 3h7a2.5 2.5 0 012.5 2.5V19a1 1 0 01-1 1h-8A2.5 2.5 0 014 17.5v-13zM6 5v12.5A.5.5 0 006.5 18H13V5.5a.5.5 0 00-.5-.5H6zm9-1h1.5A2.5 2.5 0 0119 6.5V20a1 1 0 01-1.45.9L15 19.12V4z"/>
+    </svg>
+</div>
+        <h2>Interested in Learning More?</h2>
+    </div>
+
+    <div class="resource-row">
+        <!-- BC Mental Health Act -->
+        <a href="https://irasbc.ca/" target="_blank" class="resource-card card-left">
+            <div class="resource-icon">
+                <!-- Scroll icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+                    <path d="M4 4v16h16V4H4zm14 14H6V6h12v12zM8 8h8v2H8V8zm0 4h8v2H8v-2z"/>
+                </svg>
+            </div>
+            <h3>IRAS BC</h3>
+            <p>Refer to our website for printable materials<br>and additional information about your legal rights.</p>
+        </a>
+
+        <!-- Health Justice -->
+        <a href="https://healthjustice.ca/" target="_blank" class="resource-card card-center">
+            <div class="resource-icon">
+                <!-- Scales of justice icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 1L9 8H4l5 5-2 8 7-4 7 4-2-8 5-5h-5l-3-7z"/>
+                </svg>
+            </div>
+            <h3>Health Justice</h3>
+            <p>Advocacy office providing guides, resources, and accessible tools to help you navigate systems of involuntary care in BC.</p>
+        </a>
+
+        <!-- Plain Language Guide -->
+        <a href="https://www2.gov.bc.ca/assets/gov/health/about-bc-s-health-care-system/heath-care-partners/colleges-board-and-commissions/mental-health-review-board/mha_plain.pdf" target="_blank" class="resource-card card-right">
+            <div class="resource-icon">
+                <!-- Guidebook icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#125D0D" viewBox="0 0 24 24">
+                    <path d="M4 2h12a2 2 0 0 1 2 2v18l-6-4-6 4V4a2 2 0 0 1 2-2z"/>
+                </svg>
+            </div>
+            <h3>Plain-Language Guide</h3>
+            <p>A clear and accessible guide to the MHA legislation in BC</p>
+        </a>
+    </div>
 </section>
 <br>
 
@@ -1286,23 +1633,7 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
         <strong>The IRAS Team</strong>
     </p>
 
-    <!-- Website Button -->
-    <p style="margin-bottom: 20px;">
-        <a href="https://www.irasbc.ca" target="_blank" style="
-            display: inline-block;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #125D0D; /* Dark Green Text */
-            background: #EAAA00; /* Mustard Yellow */
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.2s;
-        " onmouseover="this.style.background='#FFD700'; this.style.transform='scale(1.05)';" 
-           onmouseout="this.style.background='#EAAA00'; this.style.transform='scale(1)';">
-            Visit our website
-        </a>
-    </p>
+  
 <p style="color: #125D0D;">&copy; Asmeetha Subramaniam 2026. All rights reserved.</p>
 
     <!-- Additional Info -->
@@ -1310,59 +1641,66 @@ What Rights Advisor are <i> not </i>: <br> We are not lawyers and cannot provide
 
 </div>
 
-<script>
+    <!-- SCRIPTS -->
 
-document.addEventListener("DOMContentLoaded", function() {
-    const toggles = document.querySelectorAll('.criteria-toggle');
+    <!-- Exit button -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const exitBtn = document.getElementById("exitButton");
+        if (!exitBtn) return;
 
-    toggles.forEach(toggle => {
-        toggle.addEventListener('click', () => {
-            const content = toggle.nextElementSibling;
-            const isOpen = content.classList.contains('open');
+        function quickEscape() {
+            window.open("https://www.cbc.ca/", "_blank", "noopener");
+            window.location.replace("https://www.goodreads.com/");
+        }
 
-            if (isOpen) {
-                content.classList.remove('open');
-                toggle.classList.remove('active');
-                content.style.maxHeight = "0";
-            } else {
-                content.classList.add('open');
-                toggle.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + "px";
+        exitBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            quickEscape();
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                quickEscape();
             }
         });
     });
-});
-</script>
-
+    </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const exitBtn = document.getElementById("exitButton");
+/* CRITERIA DROPDOWNS */
 
-    if (!exitBtn) return;
+document.querySelectorAll(".criteria-toggle").forEach(button => {
+  button.addEventListener("click", () => {
 
-    function quickEscape() {
-        // Open neutral page in new tab
-        window.open("https://www.cbc.ca/", "_blank", "noopener");
+    const content = button.nextElementSibling;
 
-        // Replace current page immediately
-        window.location.replace("https://www.goodreads.com/");
+    button.classList.toggle("active");
+    content.classList.toggle("open");
+
+  });
+});
+
+
+/* FORMS DROPDOWNS */
+
+document.querySelectorAll(".form-box-toggle").forEach(button => {
+  button.addEventListener("click", () => {
+
+    const content = button.parentElement.querySelector(".form-box-content");
+
+    button.classList.toggle("active");
+
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
     }
 
-    exitBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        quickEscape();
-    });
-
-    // ESC key backup
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-            quickEscape();
-        }
-    });
-
+  });
 });
 </script>
+
 <script>
 document.querySelectorAll('.right-header').forEach(header => {
     header.addEventListener('click', () => {
@@ -1374,5 +1712,24 @@ document.querySelectorAll('.right-header').forEach(header => {
     });
 });
 </script>
-   </body>
+<script>
+const navLinks = document.querySelector('.nav-links');
+function updateScrollHint() {
+  if(navLinks.scrollWidth > navLinks.clientWidth){
+    navLinks.classList.add('scrollable');
+  } else {
+    navLinks.classList.remove('scrollable');
+  }
+}
+window.addEventListener('load', updateScrollHint);
+window.addEventListener('resize', updateScrollHint);
+navLinks.addEventListener('scroll', () => {
+  if(navLinks.scrollLeft + navLinks.clientWidth >= navLinks.scrollWidth - 1){
+    navLinks.classList.remove('scrollable');
+  } else {
+    navLinks.classList.add('scrollable');
+  }
+});
+</script>
+</body>
 </html>
